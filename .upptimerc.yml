@@ -8,12 +8,116 @@
 owner: IP-Attorney-Hub
 repo: status
 
-# Placeholders until ipah#6955 defines the public components and their checks.
+# The public components, and the checks below that decide each one's status (ipah#6955). A check
+# is a "site" to Upptime, and each site is one row on the page.
+#
+# | Component                         | Depends on                    | Decided by                         |
+# | --------------------------------- | ----------------------------- | ---------------------------------- |
+# | Web app                           | CloudFront + S3               | Web app (3 regions)                |
+# | Sign-in                           | API auth endpoints            | Sign-in                            |
+# | Proposals and work agreements     | API + Postgres + S3           | API (3 regions), API dependencies  |
+# | Documents                         | API + Postgres + S3           | API (3 regions), API dependencies  |
+# | Messaging and realtime            | API + Ably                    | API (3 regions), API dependencies  |
+# | AI assistant, Document search     | API + RAG + model provider    | API (3 regions), API dependencies  |
+# | Email notifications               | SES                           | No outside check; alarms (#6956)   |
+#
+# - The RAG service has no public address (rag.attorneyhub.com resolves inside the VPC), so no
+#   outside check can reach it. The API's /health/ready asks it, along with Postgres and Ably.
+# - /health/ready answers 503 when a dependency is down. That is "degraded", not "down": the API
+#   itself is up, and its /health decides "down". So 503 is an expected status, and the body rule
+#   marks the row degraded.
+# - Globalping runs the GET checks from three continents (type: globalping). It cannot send a POST,
+#   so the sign-in check runs from GitHub's runner. Nine Globalping checks every 5 minutes is 108
+#   measurements an hour; an anonymous runner may make 250, and the IP is shared, so the optional
+#   GLOBALPING_TOKEN secret raises the limit to 500.
+
+# The sign-in check's synthetic user. The API creates it from its own Secrets Manager secret
+# (attorneyhub-production-status-probe-password), in a legal entity of its own with no access to
+# any customer's data. Listing them here makes them the only secrets a check may substitute.
+secrets:
+  - STATUS_PROBE_EMAIL
+  - STATUS_PROBE_PASSWORD
+
 sites:
-  - name: Web app
-    url: https://www.attorneyhub.com
-  - name: API
+  # Web app: index.html must name the app bundle, so a page that answers 200 without the
+  # application (an error page, an empty bucket) still counts as down.
+  - name: Web app (North America)
+    url: https://www.attorneyhub.com/
+    type: globalping
+    location: North America
+    __dangerous__body_down_if_text_missing: 'src="/assets/index-'
+  - name: Web app (Europe)
+    url: https://www.attorneyhub.com/
+    type: globalping
+    location: Europe
+    __dangerous__body_down_if_text_missing: 'src="/assets/index-'
+  - name: Web app (Asia)
+    url: https://www.attorneyhub.com/
+    type: globalping
+    location: Asia
+    __dangerous__body_down_if_text_missing: 'src="/assets/index-'
+
+  # API: the load balancer's own health endpoint, reached through DNS and TLS as a customer does.
+  - name: API (North America)
     url: https://api.attorneyhub.com/health
+    type: globalping
+    location: North America
+    expectedStatusCodes:
+      - 200
+    __dangerous__body_down_if_text_missing: '"status":"Healthy"'
+  - name: API (Europe)
+    url: https://api.attorneyhub.com/health
+    type: globalping
+    location: Europe
+    expectedStatusCodes:
+      - 200
+    __dangerous__body_down_if_text_missing: '"status":"Healthy"'
+  - name: API (Asia)
+    url: https://api.attorneyhub.com/health
+    type: globalping
+    location: Asia
+    expectedStatusCodes:
+      - 200
+    __dangerous__body_down_if_text_missing: '"status":"Healthy"'
+
+  # API dependencies: Postgres, Ably and the RAG service, as the API sees them. Degraded, never
+  # down, on failure.
+  - name: API dependencies (North America)
+    url: https://api.attorneyhub.com/health/ready
+    type: globalping
+    location: North America
+    expectedStatusCodes:
+      - 200
+      - 503
+    __dangerous__body_degraded_if_text_missing: '"status":"Healthy"'
+  - name: API dependencies (Europe)
+    url: https://api.attorneyhub.com/health/ready
+    type: globalping
+    location: Europe
+    expectedStatusCodes:
+      - 200
+      - 503
+    __dangerous__body_degraded_if_text_missing: '"status":"Healthy"'
+  - name: API dependencies (Asia)
+    url: https://api.attorneyhub.com/health/ready
+    type: globalping
+    location: Asia
+    expectedStatusCodes:
+      - 200
+      - 503
+    __dangerous__body_degraded_if_text_missing: '"status":"Healthy"'
+
+  # Sign-in: the synthetic user signs in, and the answer must carry a token.
+  - name: Sign-in
+    url: https://api.attorneyhub.com/users/login
+    method: POST
+    headers:
+      - "Content-Type: application/json"
+      - "Accept: application/json"
+    body: '{"email":"$STATUS_PROBE_EMAIL","password":"$STATUS_PROBE_PASSWORD"}'
+    expectedStatusCodes:
+      - 200
+    __dangerous__body_down_if_text_missing: '"authToken":{"value":"'
 
 # Upptime opens an incident issue when a check fails and assigns it to these people.
 # The members of the IP-Attorney-Hub "admins" team on 2026-10-28.
