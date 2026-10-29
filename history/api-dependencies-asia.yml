@@ -1,0 +1,7 @@
+url: https://api.attorneyhub.com/health/ready
+status: degraded
+code: 401
+responseTime: 571
+lastUpdated: 2026-10-29T03:06:02.999Z
+startTime: 2026-10-29T03:05:46.219Z
+generator: Upptime <https://github.com/upptime/upptime>
