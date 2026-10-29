@@ -25,9 +25,9 @@ workflowSchedule:
   uptime: "*/5 * * * *"
 
 status-website:
-  # No custom domain until ipah#6958 points status.attorneyhub.com here; then replace baseUrl
-  # with `cname: status.attorneyhub.com`.
-  baseUrl: /status
+  # The status.attorneyhub.com CNAME to ip-attorney-hub.github.io lives in ipah's
+  # terraform/route53_dns.tf (ipah#6958).
+  cname: status.attorneyhub.com
   name: Attorney Hub Status
   introTitle: "Attorney Hub status"
   introMessage: The current status of Attorney Hub, checked every 5 minutes from outside our cloud.
