@@ -112,19 +112,19 @@
     "url": "https://api.attorneyhub.com/health/ready",
     "icon": "https://icons.duckduckgo.com/ip3/api.attorneyhub.com.ico",
     "slug": "api-dependencies-north-america",
-    "status": "degraded",
-    "uptime": "0.04%",
-    "uptimeDay": "0.04%",
-    "uptimeWeek": "0.04%",
-    "uptimeMonth": "0.04%",
-    "uptimeYear": "0.04%",
-    "time": 115,
-    "timeDay": 115,
-    "timeWeek": 115,
-    "timeMonth": 115,
-    "timeYear": 115,
+    "status": "up",
+    "uptime": "0.13%",
+    "uptimeDay": "0.13%",
+    "uptimeWeek": "0.13%",
+    "uptimeMonth": "0.13%",
+    "uptimeYear": "0.13%",
+    "time": 128,
+    "timeDay": 128,
+    "timeWeek": 128,
+    "timeMonth": 128,
+    "timeYear": 128,
     "dailyMinutesDown": {
-      "2026-10-29": 554
+      "2026-10-29": 584
     }
   },
   {
@@ -132,19 +132,19 @@
     "url": "https://api.attorneyhub.com/health/ready",
     "icon": "https://icons.duckduckgo.com/ip3/api.attorneyhub.com.ico",
     "slug": "api-dependencies-europe",
-    "status": "degraded",
-    "uptime": "0.05%",
-    "uptimeDay": "0.05%",
-    "uptimeWeek": "0.05%",
-    "uptimeMonth": "0.05%",
-    "uptimeYear": "0.05%",
-    "time": 355,
-    "timeDay": 355,
-    "timeWeek": 355,
-    "timeMonth": 355,
-    "timeYear": 355,
+    "status": "up",
+    "uptime": "0.12%",
+    "uptimeDay": "0.12%",
+    "uptimeWeek": "0.12%",
+    "uptimeMonth": "0.12%",
+    "uptimeYear": "0.12%",
+    "time": 349,
+    "timeDay": 349,
+    "timeWeek": 349,
+    "timeMonth": 349,
+    "timeYear": 349,
     "dailyMinutesDown": {
-      "2026-10-29": 554
+      "2026-10-29": 584
     }
   },
   {
@@ -152,19 +152,19 @@
     "url": "https://api.attorneyhub.com/health/ready",
     "icon": "https://icons.duckduckgo.com/ip3/api.attorneyhub.com.ico",
     "slug": "api-dependencies-asia",
-    "status": "degraded",
-    "uptime": "0.05%",
-    "uptimeDay": "0.05%",
-    "uptimeWeek": "0.05%",
-    "uptimeMonth": "0.05%",
-    "uptimeYear": "0.05%",
-    "time": 540,
-    "timeDay": 540,
-    "timeWeek": 540,
-    "timeMonth": 540,
-    "timeYear": 540,
+    "status": "up",
+    "uptime": "0.11%",
+    "uptimeDay": "0.11%",
+    "uptimeWeek": "0.11%",
+    "uptimeMonth": "0.11%",
+    "uptimeYear": "0.11%",
+    "time": 596,
+    "timeDay": 596,
+    "timeWeek": 596,
+    "timeMonth": 596,
+    "timeYear": 596,
     "dailyMinutesDown": {
-      "2026-10-29": 553
+      "2026-10-29": 584
     }
   },
   {
@@ -184,7 +184,7 @@
     "timeMonth": 270,
     "timeYear": 270,
     "dailyMinutesDown": {
-      "2026-10-29": 553
+      "2026-10-29": 584
     }
   }
 ]
