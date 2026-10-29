@@ -1,31 +1,38 @@
-# Change these first
-owner: upptime # Your GitHub organization or username, where this repository lives
-repo: upptime # The name of this repository
+# Upptime configuration for the public status page. Decision record:
+# https://github.com/IP-Attorney-Hub/ipah/blob/main/docs/software-design/status-page.md
+# Docs: https://upptime.js.org/docs/configuration
+#
+# The workflows take their token from the attorneyhub-automation GitHub App, never a personal
+# access token: the repository variable GH_APP_ID holds the App's client id, and the repository
+# secret GH_APP_PRIVATE_KEY holds its private key. Do not add a GH_PAT secret.
+owner: IP-Attorney-Hub
+repo: status
 
+# Placeholders until ipah#6955 defines the public components and their checks.
 sites:
-  - name: Google
-    url: https://www.google.com
-  - name: Wikipedia
-    url: https://en.wikipedia.org
-  - name: Hacker News
-    url: https://news.ycombinator.com
-  - name: Secret Site
-    url: $SECRET_SITE
+  - name: Web app
+    url: https://www.attorneyhub.com
+  - name: API
+    url: https://api.attorneyhub.com/health
+
+# Upptime opens an incident issue when a check fails and assigns it to these people.
+# The members of the IP-Attorney-Hub "admins" team on 2026-10-28.
+assignees:
+  - bradford281
+  - atowler84
+
+workflowSchedule:
+  uptime: "*/5 * * * *"
 
 status-website:
-  # Add your custom domain name, or remove the `cname` line if you don't have a domain
-  # Uncomment the `baseUrl` line if you don't have a custom domain and add your repo name there
-  cname: demo.upptime.js.org
-  # baseUrl: /your-repo-name
-  logoUrl: https://raw.githubusercontent.com/upptime/upptime.js.org/master/static/img/icon.svg
-  name: Upptime
-  introTitle: "**Upptime** is the open-source uptime monitor and status page, powered entirely by GitHub."
-  introMessage: This is a sample status page which uses **real-time** data from our [GitHub repository](https://github.com/upptime/upptime). No server required — just GitHub Actions, Issues, and Pages. [**Get your own for free**](https://github.com/upptime/upptime)
+  # No custom domain until ipah#6958 points status.attorneyhub.com here; then replace baseUrl
+  # with `cname: status.attorneyhub.com`.
+  baseUrl: /status
+  name: Attorney Hub Status
+  introTitle: "Attorney Hub status"
+  introMessage: The current status of Attorney Hub, checked every 5 minutes from outside our cloud.
   navbar:
     - title: Status
       href: /
-    - title: GitHub
-      href: https://github.com/$OWNER/$REPO
-
-# Upptime also supports notifications, assigning issues, and more
-# See https://upptime.js.org/docs/configuration
+    - title: Attorney Hub
+      href: https://www.attorneyhub.com
