@@ -135,8 +135,13 @@ status-website:
   name: Attorney Hub Status
   introTitle: "Attorney Hub status"
   introMessage: The current status of Attorney Hub, checked every 5 minutes from outside our cloud.
+  # Regions is a static page, assets/regions/, which rolls each region up across the systems
+  # checked there (ipah#6959). Upptime has no setting for it, and copies assets/ onto the site
+  # unchanged, so a template update leaves it alone. Its own navigation mirrors this list.
   navbar:
     - title: Status
       href: /
+    - title: Regions
+      href: /regions/
     - title: Attorney Hub
       href: https://www.attorneyhub.com
