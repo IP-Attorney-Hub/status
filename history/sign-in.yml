@@ -1,7 +1,7 @@
 url: https://api.attorneyhub.com/users/login
-status: down
-code: 400
-responseTime: 388
-lastUpdated: 2026-11-02T23:11:24.755Z
+status: up
+code: 200
+responseTime: 672
+lastUpdated: 2026-11-03T13:59:26.122Z
 startTime: 2026-10-29T03:06:05.978Z
 generator: Upptime <https://github.com/upptime/upptime>
