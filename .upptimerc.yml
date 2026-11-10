@@ -152,10 +152,12 @@ status-website:
   # favicon.svg and logo192.png, and the colors are the navy and gold of its MUI theme
   # (app/src/_shared/_views/theme/attorney-hub-theme-options.ts). assets/ is copied over the built
   # site, so assets/logo-192.png replaces Upptime's own PNG favicon, which the Regions page uses too.
-  logoUrl: /attorney-hub-logo.svg
+  # Absolute URLs: the site export crawls a root-relative one as a page and leaves a directory of
+  # that name, which the copy of assets/ then cannot overwrite.
+  logoUrl: https://status.attorneyhub.com/attorney-hub-logo.svg
   # The logo spells out "Attorney Hub", so the name beside it would repeat it.
   hideNavTitle: true
-  faviconSvg: /favicon.svg
+  faviconSvg: https://status.attorneyhub.com/favicon.svg
   # The page keeps Upptime's light and dark themes, which the Regions page shares, and overrides only
   # their accent colors. The logo is a single dark ink, so dark mode draws it white.
   css: >-
