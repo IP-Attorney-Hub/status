@@ -145,3 +145,25 @@ status-website:
       href: /regions/
     - title: Attorney Hub
       href: https://www.attorneyhub.com
+    - title: Support
+      href: mailto:support@attorneyhub.com
+  # Branding (ipah#6958). The logo, favicons and colors are the app's own: the logo and favicon are
+  # copies of ipah's app/src/_shared/_views/assets/attorney-hub-logo-alt.svg and app/public/
+  # favicon.svg and logo192.png, and the colors are the navy and gold of its MUI theme
+  # (app/src/_shared/_views/theme/attorney-hub-theme-options.ts). assets/ is copied over the built
+  # site, so assets/logo-192.png replaces Upptime's own PNG favicon, which the Regions page uses too.
+  logoUrl: /attorney-hub-logo.svg
+  # The logo spells out "Attorney Hub", so the name beside it would repeat it.
+  hideNavTitle: true
+  faviconSvg: /favicon.svg
+  # The page keeps Upptime's light and dark themes, which the Regions page shares, and overrides only
+  # their accent colors. The logo is a single dark ink, so dark mode draws it white.
+  css: >-
+    :root { --nav-current-border-bottom-color: #E19941; --error-button-border-color: #1F3A5F;
+    --error-button-background-color: #1F3A5F; --submit-button-border-color: #1F3A5F;
+    --submit-button-background-color: #1F3A5F; }
+    @media (prefers-color-scheme: light) { :root { --body-text-color: #1B2333;
+    --body-background-color: #F5F6F8; --nav-border-bottom-color: #DDE1E7;
+    --card-border-color: #DDE1E7; } }
+    nav .logo img { height: 2rem; width: auto; }
+    @media (prefers-color-scheme: dark) { nav .logo img { filter: brightness(0) invert(1); } }
