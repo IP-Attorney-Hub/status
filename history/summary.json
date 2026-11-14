@@ -61,18 +61,18 @@
     "icon": "https://icons.duckduckgo.com/ip3/api.attorneyhub.com.ico",
     "slug": "api-north-america",
     "status": "up",
-    "uptime": "99.83%",
-    "uptimeDay": "97.26%",
-    "uptimeWeek": "99.61%",
-    "uptimeMonth": "99.83%",
-    "uptimeYear": "99.83%",
+    "uptime": "99.66%",
+    "uptimeDay": "94.59%",
+    "uptimeWeek": "99.23%",
+    "uptimeMonth": "99.66%",
+    "uptimeYear": "99.66%",
     "time": 244,
     "timeDay": 319,
     "timeWeek": 265,
     "timeMonth": 244,
     "timeYear": 244,
     "dailyMinutesDown": {
-      "2026-11-14": 39
+      "2026-11-14": 78
     }
   },
   {
@@ -160,19 +160,20 @@
     "url": "https://api.attorneyhub.com/health/ready",
     "icon": "https://icons.duckduckgo.com/ip3/api.attorneyhub.com.ico",
     "slug": "api-dependencies-asia",
-    "status": "up",
-    "uptime": "97.48%",
-    "uptimeDay": "100.00%",
+    "status": "down",
+    "uptime": "97.49%",
+    "uptimeDay": "99.99%",
     "uptimeWeek": "100.00%",
-    "uptimeMonth": "97.48%",
-    "uptimeYear": "97.48%",
+    "uptimeMonth": "97.49%",
+    "uptimeYear": "97.49%",
     "time": 599,
     "timeDay": 704,
     "timeWeek": 563,
     "timeMonth": 599,
     "timeYear": 599,
     "dailyMinutesDown": {
-      "2026-10-29": 584
+      "2026-10-29": 584,
+      "2026-11-14": 0
     }
   },
   {
